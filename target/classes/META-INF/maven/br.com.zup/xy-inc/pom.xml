@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.zup</groupId>
-	<artifactId>xyinc</artifactId>
+	<artifactId>xy-inc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Back-end POI</name>
 	<description>XYInc project for Spring Boot</description>

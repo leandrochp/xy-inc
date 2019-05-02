@@ -30,7 +30,7 @@ public class POIService {
 			// calculate square
 			double sqrt	= Math.sqrt( Math.pow((poi.getX() - x), 2) + Math.pow((poi.getY() - y), 2) );
 			// add POIs with max distance = 10
-			if (max >= ((int)Math.ceil(sqrt))) {
+			if (max >= ((int) Math.ceil(sqrt))) {
 				pois.add(poi);
 			}
 		}
