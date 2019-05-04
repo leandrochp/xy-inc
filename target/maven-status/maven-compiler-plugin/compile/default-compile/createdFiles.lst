@@ -1,0 +1,5 @@
+br/com/zup/model/POI.class
+br/com/zup/controller/POIController.class
+br/com/zup/service/POIService.class
+br/com/zup/XYIncApplication.class
+br/com/zup/repository/POIRepository.class

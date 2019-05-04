@@ -14,6 +14,7 @@ public class POIService {
 
 	@Autowired
 	POIRepository poiRepository;
+	
 	// max distance
 	final int max = 10;
 	
@@ -23,7 +24,7 @@ public class POIService {
 		return pois;
 	}
 
-	public List<POI> getPOIByXAndY(Integer x, Integer y) {	
+	public List<POI> getPOIsByCoordenates(Integer x, Integer y) {	
 		List<POI> pois = new ArrayList<POI>();
 		
 		for (POI poi : poiRepository.findAll()) {

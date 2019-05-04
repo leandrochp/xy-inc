@@ -24,12 +24,12 @@ public class POIController {
 	}
 
 	@GetMapping("/pois/x/{x}/y/{y}")
-	private List<POI> getPOIs(@PathVariable("x") Integer x, @PathVariable("y") Integer y) {
- 		return poiService.getPOIByXAndY(x, y);
+	private List<POI> getPOIsByCoordenates(@PathVariable("x") Integer x, @PathVariable("y") Integer y) {
+ 		return poiService.getPOIsByCoordenates(x, y);
 	}
 	
 	@PostMapping("/pois")
-	private POI savePOI(@RequestBody POI poi) {
+	private POI saveOrUpdate(@RequestBody POI poi) {
 		poiService.saveOrUpdate(poi);
 		return poi;
 	}
