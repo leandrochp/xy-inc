@@ -47,71 +47,69 @@ Nós estaremos realizando operações através de um objeto POI. Vamos definí-l
 ### Definindo POIRepository
 Como estamos usando o JPA para interagir com o banco de dados, então vamos definir o POIRepository:
 
-`public interface POIRepository extends CrudRepository<POI, Long> {}`
+public interface POIRepository extends CrudRepository<POI, Long> {}
 
 ### Definindo POIService
 O POIService estará expondo métodos que serão chamados do Controller que interage com o repositório:
-`
-@Service
-public class POIService {
 
-	@Autowired
-	POIRepository poiRepository;
-	
-	// max distance
-	final int max = 10;
-	
-	public List<POI> getAllPOIs() {
-		List<POI> pois = new ArrayList<POI>();
-		poiRepository.findAll().forEach(poi -> pois.add(poi));
-		return pois;
-	}
+    @Service
+    public class POIService {
+    
+    	@Autowired
+    	POIRepository poiRepository;
+    	
+    	// max distance
+    	final int max = 10;
+    	
+    	public List<POI> getAllPOIs() {
+    		List<POI> pois = new ArrayList<POI>();
+    		poiRepository.findAll().forEach(poi -> pois.add(poi));
+    		return pois;
+    	}
+    
+    	public List<POI> getPOIsByCoordenates(int x, int y) {	
+    		List<POI> pois = new ArrayList<POI>();
+    		
+    		for (POI poi : poiRepository.findAll()) {
+    			// calculate square
+    			double sqrt	= Math.sqrt( Math.pow((poi.getX() - x), 2) + Math.pow((poi.getY() - y), 2) );
+    			// add POIs with max distance = 10
+    			if (max >= ((int) Math.ceil(sqrt))) {
+    				pois.add(poi);
+    			}
+    		}
+    		return pois;
+    	}
+    	
+    	public void saveOrUpdate(POI poi) {
+    		poiRepository.save(poi);
+    	}
+    }
 
-	public List<POI> getPOIsByCoordenates(int x, int y) {	
-		List<POI> pois = new ArrayList<POI>();
-		
-		for (POI poi : poiRepository.findAll()) {
-			// calculate square
-			double sqrt	= Math.sqrt( Math.pow((poi.getX() - x), 2) + Math.pow((poi.getY() - y), 2) );
-			// add POIs with max distance = 10
-			if (max >= ((int) Math.ceil(sqrt))) {
-				pois.add(poi);
-			}
-		}
-		return pois;
-	}
-	
-	public void saveOrUpdate(POI poi) {
-		poiRepository.save(poi);
-	}
-}
-`
 ### Definindo POIController
 O POIController disponibilizará métodos que serão chamados por diferentes chamadas de endpoints:
-`
-@RestController
-public class POIController {
 
-	@Autowired
-	POIService poiService;
-
-	@GetMapping("/pois")
-	private List<POI> getAllPOIs() {
-		return poiService.getAllPOIs();
-	}
-
-	@GetMapping("/pois/x/{x}/y/{y}")
-	private List<POI> getPOIsByCoordenates(@PathVariable("x") int x, @PathVariable("y") int y) {
- 		return poiService.getPOIsByCoordenates(x, y);
-	}
-	
-	@PostMapping("/pois")
-	private POI saveOrUpdate(@RequestBody POI poi) {
-		poiService.saveOrUpdate(poi);
-		return poi;
-	}
-}
-`
+    @RestController
+    public class POIController {
+    	@Autowired
+    	POIService poiService;
+    	
+    	@GetMapping("/pois")
+    	private List<POI> getAllPOIs() {
+    		return poiService.getAllPOIs();
+    	}
+    	
+    	@GetMapping("/pois/x/{x}/y/{y}")
+    	private List<POI> getPOIsByCoordenates(@PathVariable("x") int x, @PathVariable("y") int y) {
+     		return poiService.getPOIsByCoordenates(x, y);
+    	}
+    	
+    	@PostMapping("/pois")
+    	private POI saveOrUpdate(@RequestBody POI poi) {
+    		poiService.saveOrUpdate(poi);
+    		return poi;
+    	}
+    }
 
 ## Testando a API POI
 Para testar o serviço REST, vamos usar a ferramenta [POSTMAN](https://www.getpostman.com/), que pode ser integrada ao navegador Chrome facilmente usando a extensão do navegador.
@@ -153,6 +151,7 @@ Na resposta, obteremos os objetos POIs cadastrados por proximidade de x = 20 e y
 > Nota: Os valores de x e y são valores do caso de teste.
 
 ## Obtendo o código
+* [Código fonte](https://github.com/leandrochp/xy-inc)
 
 O que você precisará:
 
@@ -162,7 +161,5 @@ O que você precisará:
 Você também pode importar o código direto para o seu IDE:
 * [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
 * [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
-
-* [Código fonte](https://github.com/leandrochp/xy-inc)
 
 
