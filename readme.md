@@ -111,7 +111,8 @@ O POIController disponibilizará métodos que serão chamados por diferentes cha
 Para testar o serviço REST, vamos usar a ferramenta [POSTMAN](https://www.getpostman.com/), que pode ser integrada ao navegador Chrome facilmente usando a [extensão do navegador](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop).
 
 Certifique-se que a aplicação está em execução. A saída no console deve ser algo como isso. Isso confirma que ele foi iniciado corretamente:
-> `INFO 17200 --- [           main] br.com.zup.XYIncApplication              : Started XYIncApplication in 30.326 seconds (JVM running for 31.2)`
+
+    INFO 17200 --- [           main] br.com.zup.XYIncApplication              : Started XYIncApplication in 30.326 seconds (JVM running for 31.2)
 
 ### Caso de Teste 1: Criando novo objeto POI
 `Abra o POSTMAN`
