@@ -22,14 +22,14 @@ Para iniciar a aplicação é necessário usar o comando java -jar passando para
 
 A API POI executará algumas operações usando diferentes endpoints. Abaixo estão os detalhes dos endpoints:
 
-* Chamada **GET** para **/pois** exibirá todos os objetos POI disponíveis no banco de dados H2.
-* Chamada **GET** para **/pois/x/{x}/y/{y}** exibirá os objetos POI com proximidade de no máximo 10 metros de distância.
-* Chamada **POST** para **/pois** irá inserir um novo objeto POI no banco de dados.
+* Chamada **GET** para **/pois** exibirá todos os pontos de interesse cadastrados no banco de dados H2.
+* Chamada **GET** para **/pois/x/{x}/y/{y}** exibirá os pontos de interesse com proximidade de no máximo 10 metros de distância.
+* Chamada **POST** para **/pois** irá inserir um novo ponto de interesse no banco de dados.
 
 ## Definição de implementação
 
 ### Definindo uma entidade
-Nós estaremos realizando operações através de um objeto POI. Vamos definí-lo com apenas quatro atributos atendendo o projeto:
+As operações de CRUD serão através de um objeto POI.
 
     @Entity(name = "poi")
     public class POI {
@@ -70,14 +70,8 @@ O POIService estará expondo métodos que serão chamados do Controller que inte
     	public List<POI> getPOIsByCoordenates(int x, int y) {	
     		List<POI> pois = new ArrayList<POI>();
     		
-    		for (POI poi : poiRepository.findAll()) {
-    			// calculate square
-    			double sqrt	= Math.sqrt( Math.pow((poi.getX() - x), 2) + Math.pow((poi.getY() - y), 2) );
-    			// add POIs with max distance = 10
-    			if (max >= ((int) Math.ceil(sqrt))) {
-    				pois.add(poi);
-    			}
-    		}
+            // code calculate square
+            
     		return pois;
     	}
     	
