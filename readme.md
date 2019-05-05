@@ -47,7 +47,7 @@ Nós estaremos realizando operações através de um objeto POI. Vamos definí-l
 ### Definindo POIRepository
 Como estamos usando o JPA para interagir com o banco de dados, então vamos definir o POIRepository:
 
-public interface POIRepository extends CrudRepository<POI, Long> {}
+    public interface POIRepository extends CrudRepository<POI, Long> {}
 
 ### Definindo POIService
 O POIService estará expondo métodos que serão chamados do Controller que interage com o repositório:
@@ -154,6 +154,7 @@ Na resposta, obteremos os objetos POIs cadastrados por proximidade de x = 20 e y
 Para validar os dados no banco de dados H2, acesse via browser [Console H2](http://localhost:8080/h2-console) o console administrativo.
 
 Isso é possível pela configuração no arquivo de propriedades da aplicação:
+
     spring.datasource.type=com.zaxxer.hikari.HikariDataSource
     spring.datasource.url=jdbc:h2:mem:test
     spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
