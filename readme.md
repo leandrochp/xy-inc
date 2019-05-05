@@ -1,10 +1,10 @@
 # XY-Inc
 
-**XY Inc.** é uma empresa especializada na produção de excelentes receptores GPS (Global Positioning System).
+**XY Inc.** é uma empresa especializada na produção de excelentes receptores GPS (Global Positioning System).
 
 O projeto é uma aplicação web para auxiliar as pessoas na localização de ponto de interesse (POIs). Aplicação foi desenvolvida em Java e com framework Spring Boot que ajuda a acelerar e facilitar o desenvolvimento de aplicativos.
 
-A aplicação disponibiliza **3 serviços** para consulta dos pontos de interesse, por proximidade e cadastro de um novo ponto de interesse.
+A aplicação disponibiliza **3 serviços** que são: consulta dos pontos de interesse, por proximidade e cadastro de um novo ponto de interesse.
 
 A aplicação utiliza bando de dados [H2](http://www.h2database.com/html/main.html) embutido com alguns pontos de interesse (POIs) cadastrados.
 
@@ -72,7 +72,7 @@ O POIService estará expondo métodos que serão chamados do Controller que inte
     	public List<POI> getPOIsByCoordenates(int x, int y) {	
     		List<POI> pois = new ArrayList<POI>();
     		
-            // code calculate square
+                 // code calculate square
             
     		return pois;
     	}
@@ -148,7 +148,7 @@ Na resposta, obteremos os objetos POIs cadastrados por proximidade de x = 20 e y
 > Nota: Os valores de x e y são valores do caso de teste.
 
 ## Validando os dados
-Para validar os dados no banco de dados H2, acesse via browser [Console H2](http://localhost:8080/h2-console) o console administrativo.
+Para validar os dados no banco de dados H2 acesse via browser [Console H2](http://localhost:8080/h2-console) o console administrativo.
 
 Isso é possível pela configuração no arquivo de propriedades da aplicação:
 
