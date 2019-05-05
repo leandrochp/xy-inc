@@ -15,7 +15,9 @@ O que você precisará:
 
 Faça o download do arquivo da aplicação em https://github.com/leandrochp/xy-inc/blob/master/target/xy-inc-0.0.1-SNAPSHOT.jar
 
-Para iniciar a aplicação é necessário usar o comando java -jar passando para o comando o arquivo acima. Por exemplo: java -jar xy-inc-0.0.1-SNAPSHOT.jar
+Para iniciar a aplicação é necessário usar o comando java -jar passando para o comando o arquivo acima.
+Por exemplo: 
+java -jar xy-inc-0.0.1-SNAPSHOT.jar
 
 ## Visão geral (API POI) 
 É um serviço REST simples no qual iremos interagir com o H2 usando o Spring Boot.
