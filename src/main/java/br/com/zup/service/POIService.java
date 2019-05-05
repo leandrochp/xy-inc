@@ -24,7 +24,7 @@ public class POIService {
 		return pois;
 	}
 
-	public List<POI> getPOIsByCoordenates(Integer x, Integer y) {	
+	public List<POI> getPOIsByCoordenates(int x, int y) {	
 		List<POI> pois = new ArrayList<POI>();
 		
 		for (POI poi : poiRepository.findAll()) {

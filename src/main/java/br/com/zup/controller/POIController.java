@@ -24,7 +24,7 @@ public class POIController {
 	}
 
 	@GetMapping("/pois/x/{x}/y/{y}")
-	private List<POI> getPOIsByCoordenates(@PathVariable("x") Integer x, @PathVariable("y") Integer y) {
+	private List<POI> getPOIsByCoordenates(@PathVariable("x") int x, @PathVariable("y") int y) {
  		return poiService.getPOIsByCoordenates(x, y);
 	}
 	
