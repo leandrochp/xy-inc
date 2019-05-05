@@ -6,7 +6,7 @@ O projeto é uma aplicação web para auxiliar as pessoas na localização de po
 
 A aplicação disponibiliza **3 serviços** para consulta dos pontos de interesse, por proximidade e cadastro de um novo ponto de interesse.
 
-A aplicação utiliza bando de dados H2 Database Engine embutido com alguns pontos de interesse cadastrados.
+A aplicação utiliza bando de dados [H2](http://www.h2database.com/html/main.html) embutido com alguns pontos de interesse (POIs) cadastrados.
 
 ## Começando
 
@@ -112,7 +112,7 @@ O POIController disponibilizará métodos que serão chamados por diferentes cha
     }
 
 ## Testando a API POI
-Para testar o serviço REST, vamos usar a ferramenta [POSTMAN](https://www.getpostman.com/), que pode ser integrada ao navegador Chrome facilmente usando a extensão do navegador.
+Para testar o serviço REST, vamos usar a ferramenta [POSTMAN](https://www.getpostman.com/), que pode ser integrada ao navegador Chrome facilmente usando a [extensão do navegador](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop).
 
 Certifique-se que a aplicação está em execução. A saída no console deve ser algo como isso. Isso confirma que ele foi iniciado corretamente:
 > `INFO 17200 --- [           main] br.com.zup.XYIncApplication              : Started XYIncApplication in 30.326 seconds (JVM running for 31.2)`
@@ -149,6 +149,24 @@ Na resposta, obteremos os objetos POIs cadastrados.
 Na resposta, obteremos os objetos POIs cadastrados por proximidade de x = 20 e y = 10
 
 > Nota: Os valores de x e y são valores do caso de teste.
+
+## Validando os dados
+Para validar os dados no banco de dados H2, acesse via browser [Console H2](http://localhost:8080/h2-console) o console administrativo.
+
+Isso é possível pela configuração no arquivo de propriedades da aplicação:
+    spring.datasource.type=com.zaxxer.hikari.HikariDataSource
+    spring.datasource.url=jdbc:h2:mem:test
+    spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+    spring.jpa.database=h2
+    spring.datasource.username=sa
+    spring.datasource.password=
+    #Enabling H2 Console
+    spring.h2.console.enabled=true
+    spring.h2.console.path=/h2-console
+    spring.h2.console.settings.trace=false
+    spring.h2.console.settings.web-allow-others=false
+
+> Nota: Você pode ver um valor diferente na URL do JDBC, portanto, altere a URL do banco de dados para **jdbc:h2:mem:testdb** na tela de login, pois essa é a URL padrão configurada pelo framework Spring Boot.
 
 ## Obtendo o código
 * [Código fonte](https://github.com/leandrochp/xy-inc)
