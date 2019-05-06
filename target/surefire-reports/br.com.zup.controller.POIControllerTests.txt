@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.zup.controller.POIControllerTests
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.666 s - in br.com.zup.controller.POIControllerTests

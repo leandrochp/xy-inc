@@ -15,6 +15,16 @@ public class POI {
 	private Integer x;
 	private Integer y;
 
+	public POI() {
+		super();
+	}
+	
+	public POI(String nome, Integer x, Integer y) {
+		this.nome = nome;
+		this.x = x;
+		this.y = y;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

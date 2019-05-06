@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.zup.xyinc.XYIncApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.225 s - in br.com.zup.xyinc.XYIncApplicationTests
