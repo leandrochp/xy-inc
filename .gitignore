@@ -2,4 +2,5 @@
 /target/classes/
 /target/maven-archiver/
 /target/maven-status/
+/target/surefire/
 /target/surefire-reports/
