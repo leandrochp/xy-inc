@@ -13,14 +13,8 @@ A aplicação utiliza bando de dados [H2](http://www.h2database.com/html/main.ht
 O que você precisará:
 * [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) ou posterior instalado na sua máquina.
 
-Faça o download do arquivo da aplicação em https://github.com/leandrochp/xy-inc/blob/master/target/xy-inc-0.0.1-SNAPSHOT.jar
-
-Para iniciar a aplicação é necessário usar o comando java -jar passando para o comando o arquivo acima.
-Por exemplo: 
-java -jar xy-inc-0.0.1-SNAPSHOT.jar
-
 ## Visão geral (API POI) 
-É um serviço REST simples no qual iremos interagir com o H2 usando o Spring Boot.
+É um serviço REST simples no qual iremos interagir com o banco de dados H2 usando o Spring Boot.
 
 A API POI executará algumas operações usando diferentes endpoints. Abaixo estão os detalhes dos endpoints:
 
@@ -168,6 +162,13 @@ Isso é possível pela configuração no arquivo de propriedades da aplicação:
 
 ## Obtendo o código
 * [Código fonte](https://github.com/leandrochp/xy-inc)
+
+
+### Caso queria executar o projeto sem obter o código, está disponível para download uma versão inicial na pasta target:
+https://github.com/leandrochp/xy-inc/blob/master/target/xy-inc-0.0.1-SNAPSHOT.jar
+
+Para iniciar a aplicação é necessário usar o comando java -jar passando para o comando o arquivo acima.
+Por exemplo: ```java -jar xy-inc-0.0.1-SNAPSHOT.jar```
 
 O que você precisará:
 
