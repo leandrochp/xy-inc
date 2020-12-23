@@ -26,7 +26,7 @@ A API POI executará algumas operações usando diferentes endpoints. Abaixo est
 
 ### Definindo uma entidade
 As operações de CRUD serão através de um objeto POI.
-
+```
     @Entity(name = "poi")
     public class POI {
       @Id
@@ -39,15 +39,17 @@ As operações de CRUD serão através de um objeto POI.
       
       // getters and setters
     }
+```
 
 ### Definindo POIRepository
 Como estamos usando o JPA para interagir com o banco de dados, então vamos definir o POIRepository:
 
-    public interface POIRepository extends CrudRepository<POI, Long> {}
+``` public interface POIRepository extends CrudRepository<POI, Long> {} ```
 
 ### Definindo POIService
 O POIService estará expondo métodos que serão chamados do Controller que interage com o repositório:
 
+```
     @Service
     public class POIService {
     
@@ -75,10 +77,11 @@ O POIService estará expondo métodos que serão chamados do Controller que inte
     		poiRepository.save(poi);
     	}
     }
+```
 
 ### Definindo POIController
 O POIController disponibilizará métodos que serão chamados por diferentes chamadas de endpoints:
-
+```
     @RestController
     public class POIController {
     	@Autowired
@@ -100,13 +103,14 @@ O POIController disponibilizará métodos que serão chamados por diferentes cha
     		return poi;
     	}
     }
+```
 
 ## Testando a API POI
 Para testar o serviço REST, vamos usar a ferramenta [POSTMAN](https://www.getpostman.com/), que pode ser integrada ao navegador Chrome facilmente usando a [extensão do navegador](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop).
 
 Certifique-se que a aplicação está em execução. A saída no console deve ser algo como isso. Isso confirma que ele foi iniciado corretamente:
 
-    INFO 17200 --- [           main] br.com.zup.XYIncApplication              : Started XYIncApplication in 30.326 seconds (JVM running for 31.2)
+``` INFO 17200 --- [           main] br.com.zup.XYIncApplication              : Started XYIncApplication in 30.326 seconds (JVM running for 31.2)```
 
 ### Caso de Teste 1: Criando novo objeto POI
 `Abra o POSTMAN`
@@ -145,7 +149,7 @@ Na resposta, obteremos os objetos POIs cadastrados por proximidade de x = 20 e y
 Para validar os dados no banco de dados H2 acesse via browser [Console H2](http://localhost:8080/h2-console) o console administrativo.
 
 Isso é possível pela configuração no arquivo de propriedades da aplicação:
-
+```
     spring.datasource.type=com.zaxxer.hikari.HikariDataSource
     spring.datasource.url=jdbc:h2:mem:test
     spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
@@ -157,12 +161,12 @@ Isso é possível pela configuração no arquivo de propriedades da aplicação:
     spring.h2.console.path=/h2-console
     spring.h2.console.settings.trace=false
     spring.h2.console.settings.web-allow-others=false
+```
 
 > Nota: Você pode ver um valor diferente na URL do JDBC, portanto, altere a URL do banco de dados para **jdbc:h2:mem:testdb** na tela de login, pois essa é a URL padrão configurada pelo framework Spring Boot.
 
 ## Obtendo o código
 * [Código fonte](https://github.com/leandrochp/xy-inc)
-
 
 ### Caso queria executar o projeto sem obter o código, está disponível para download uma versão inicial na pasta target:
 https://github.com/leandrochp/xy-inc/blob/master/target/xy-inc-0.0.1-SNAPSHOT.jar
@@ -178,5 +182,4 @@ O que você precisará:
 Você também pode importar o código direto para o seu IDE:
 * [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
 * [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
-
 
