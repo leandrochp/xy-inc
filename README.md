@@ -27,18 +27,18 @@ A API POI executará algumas operações usando diferentes endpoints. Abaixo est
 ### Definindo uma entidade
 As operações de CRUD serão através de um objeto POI.
 ```
-    @Entity(name = "poi")
-    public class POI {
-      @Id
-      @GeneratedValue
-      private Long id;
-      
-      private String nome;
-      private Integer x;
-      private Integer y;
-      
-      // getters and setters
-    }
+@Entity(name = "poi")
+public class POI {
+  @Id
+  @GeneratedValue
+  private Long id;
+
+  private String nome;
+  private Integer x;
+  private Integer y;
+
+  // getters and setters
+}
 ```
 
 ### Definindo POIRepository
@@ -50,59 +50,59 @@ Como estamos usando o JPA para interagir com o banco de dados, então vamos defi
 O POIService estará expondo métodos que serão chamados do Controller que interage com o repositório:
 
 ```
-    @Service
-    public class POIService {
-    
-    	@Autowired
-    	POIRepository poiRepository;
-    	
-    	// max distance
-    	final int max = 10;
-    	
-    	public List<POI> getAllPOIs() {
-    		List<POI> pois = new ArrayList<POI>();
-    		poiRepository.findAll().forEach(poi -> pois.add(poi));
-    		return pois;
-    	}
-    
-    	public List<POI> getPOIsByCoordenates(int x, int y) {	
-    		List<POI> pois = new ArrayList<POI>();
-    		
-                 // code calculate square
-            
-    		return pois;
-    	}
-    	
-    	public void saveOrUpdate(POI poi) {
-    		poiRepository.save(poi);
-    	}
+@Service
+public class POIService {
+
+    @Autowired
+    POIRepository poiRepository;
+
+    // max distance
+    final int max = 10;
+
+    public List<POI> getAllPOIs() {
+        List<POI> pois = new ArrayList<POI>();
+        poiRepository.findAll().forEach(poi -> pois.add(poi));
+        return pois;
     }
+
+    public List<POI> getPOIsByCoordenates(int x, int y) {	
+        List<POI> pois = new ArrayList<POI>();
+
+             // code calculate square
+
+        return pois;
+    }
+
+    public void saveOrUpdate(POI poi) {
+        poiRepository.save(poi);
+    }
+}
 ```
 
 ### Definindo POIController
 O POIController disponibilizará métodos que serão chamados por diferentes chamadas de endpoints:
 ```
-    @RestController
-    public class POIController {
-    	@Autowired
-    	POIService poiService;
-    	
-    	@GetMapping("/pois")
-    	private List<POI> getAllPOIs() {
-    		return poiService.getAllPOIs();
-    	}
-    	
-    	@GetMapping("/pois/x/{x}/y/{y}")
-    	private List<POI> getPOIsByCoordenates(@PathVariable("x") int x, @PathVariable("y") int y) {
-     		return poiService.getPOIsByCoordenates(x, y);
-    	}
-    	
-    	@PostMapping("/pois")
-    	private POI saveOrUpdate(@RequestBody POI poi) {
-    		poiService.saveOrUpdate(poi);
-    		return poi;
-    	}
+@RestController
+public class POIController {
+    @Autowired
+    POIService poiService;
+
+    @GetMapping("/pois")
+    private List<POI> getAllPOIs() {
+        return poiService.getAllPOIs();
     }
+
+    @GetMapping("/pois/x/{x}/y/{y}")
+    private List<POI> getPOIsByCoordenates(@PathVariable("x") int x, @PathVariable("y") int y) {
+        return poiService.getPOIsByCoordenates(x, y);
+    }
+
+    @PostMapping("/pois")
+    private POI saveOrUpdate(@RequestBody POI poi) {
+        poiService.saveOrUpdate(poi);
+        return poi;
+    }
+}
 ```
 
 ## Testando a API POI
@@ -110,7 +110,7 @@ Para testar o serviço REST, vamos usar a ferramenta [POSTMAN](https://www.getpo
 
 Certifique-se que a aplicação está em execução. A saída no console deve ser algo como isso. Isso confirma que ele foi iniciado corretamente:
 
-``` INFO 17200 --- [           main] br.com.zup.XYIncApplication              : Started XYIncApplication in 30.326 seconds (JVM running for 31.2)```
+``` INFO 17200 --- [main] br.com.zup.XYIncApplication: Started XYIncApplication in 30.326 seconds (JVM running for 31.2)```
 
 ### Caso de Teste 1: Criando novo objeto POI
 `Abra o POSTMAN`
@@ -150,17 +150,18 @@ Para validar os dados no banco de dados H2 acesse via browser [Console H2](http:
 
 Isso é possível pela configuração no arquivo de propriedades da aplicação:
 ```
-    spring.datasource.type=com.zaxxer.hikari.HikariDataSource
-    spring.datasource.url=jdbc:h2:mem:test
-    spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-    spring.jpa.database=h2
-    spring.datasource.username=sa
-    spring.datasource.password=
-    #Enabling H2 Console
-    spring.h2.console.enabled=true
-    spring.h2.console.path=/h2-console
-    spring.h2.console.settings.trace=false
-    spring.h2.console.settings.web-allow-others=false
+spring.datasource.type=com.zaxxer.hikari.HikariDataSource
+spring.datasource.url=jdbc:h2:mem:test
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.database=h2
+spring.datasource.username=sa
+spring.datasource.password=
+
+#Enabling H2 Console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+spring.h2.console.settings.trace=false
+spring.h2.console.settings.web-allow-others=false
 ```
 
 > Nota: Você pode ver um valor diferente na URL do JDBC, portanto, altere a URL do banco de dados para **jdbc:h2:mem:testdb** na tela de login, pois essa é a URL padrão configurada pelo framework Spring Boot.
@@ -179,7 +180,7 @@ O que você precisará:
 * Um editor de texto favorito ou IDE
 * [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) ou posterior
 
-Você também pode importar o código direto para o seu IDE:
+Você também pode importar o código direto para o sua IDE de preferência:
 * [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
 * [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
 
