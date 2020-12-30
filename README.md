@@ -9,7 +9,7 @@ A aplicação disponibiliza **3 serviços** que são: consulta dos pontos de int
 A aplicação utiliza bando de dados [H2](http://www.h2database.com/html/main.html) embutido com alguns pontos de interesse (POIs) cadastrados.
 
 ## Visão geral (API POI) 
-É um serviço REST simples no qual iremos interagir com o banco de dados H2 usando o Spring Boot.
+É um serviço RESTful simples no qual iremos interagir com o banco de dados H2 usando o Spring Boot.
 
 A API POI executará algumas operações usando diferentes endpoints. Abaixo estão os detalhes dos endpoints:
 
@@ -162,10 +162,5 @@ spring.h2.console.settings.web-allow-others=false
 > Nota: Você pode ver um valor diferente na URL do JDBC, portanto, altere a URL do banco de dados para **jdbc:h2:mem:testdb** na tela de login, pois essa é a URL padrão configurada pelo framework Spring Boot.
 
 
-### Caso queria executar o projeto sem obter o código, está disponível para download uma versão inicial na pasta target:
-https://github.com/leandrochp/xy-inc/blob/master/target/xy-inc-0.0.1-SNAPSHOT.jar
-
-Para iniciar a aplicação é necessário usar o comando java -jar passando para o comando o arquivo acima.
-Por exemplo: ```java -jar xy-inc-0.0.1-SNAPSHOT.jar```
 
 
