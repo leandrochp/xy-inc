@@ -8,11 +8,6 @@ A aplicação disponibiliza **3 serviços** que são: consulta dos pontos de int
 
 A aplicação utiliza bando de dados [H2](http://www.h2database.com/html/main.html) embutido com alguns pontos de interesse (POIs) cadastrados.
 
-## Começando
-
-O que você precisará:
-* [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) ou posterior instalado na sua máquina.
-
 ## Visão geral (API POI) 
 É um serviço REST simples no qual iremos interagir com o banco de dados H2 usando o Spring Boot.
 
@@ -166,8 +161,6 @@ spring.h2.console.settings.web-allow-others=false
 
 > Nota: Você pode ver um valor diferente na URL do JDBC, portanto, altere a URL do banco de dados para **jdbc:h2:mem:testdb** na tela de login, pois essa é a URL padrão configurada pelo framework Spring Boot.
 
-## Obtendo o código
-* [Código fonte](https://github.com/leandrochp/xy-inc)
 
 ### Caso queria executar o projeto sem obter o código, está disponível para download uma versão inicial na pasta target:
 https://github.com/leandrochp/xy-inc/blob/master/target/xy-inc-0.0.1-SNAPSHOT.jar
@@ -175,12 +168,4 @@ https://github.com/leandrochp/xy-inc/blob/master/target/xy-inc-0.0.1-SNAPSHOT.ja
 Para iniciar a aplicação é necessário usar o comando java -jar passando para o comando o arquivo acima.
 Por exemplo: ```java -jar xy-inc-0.0.1-SNAPSHOT.jar```
 
-O que você precisará:
-
-* Um editor de texto favorito ou IDE
-* [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) ou posterior
-
-Você também pode importar o código direto para o sua IDE de preferência:
-* [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
-* [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
 
